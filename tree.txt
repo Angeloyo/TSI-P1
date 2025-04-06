@@ -1,0 +1,543 @@
+.
+├── actionsFile_aliens_lvl0.txt
+├── .classpath
+├── clients
+│   ├── gson-2.6.2.jar
+│   ├── GVGAI-JavaClient
+│   │   ├── GVGAI-JavaClient.iml
+│   │   └── src
+│   │       ├── DontUnderestimateUchiha
+│   │       │   └── Agent.java
+│   │       ├── kkunan
+│   │       │   ├── Agent.java
+│   │       │   └── FeatureState
+│   │       │       ├── AvatarInfoState.java
+│   │       │       └── LearningState.java
+│   │       ├── oneclickRunFromJavaClient.bat
+│   │       ├── oneclickRunFromJavaClient.sh
+│   │       ├── sampleLearner
+│   │       │   ├── Agent.java
+│   │       │   ├── Cell.java
+│   │       │   ├── GameSelector.java
+│   │       │   ├── GameStat.java
+│   │       │   ├── StateActionKey.java
+│   │       │   ├── StateActionQMap.java
+│   │       │   └── State.java
+│   │       ├── sampleRandom
+│   │       │   └── Agent.java
+│   │       ├── serialization
+│   │       │   ├── ArrayAdapterFactory.java
+│   │       │   ├── ArrayAdapter.java
+│   │       │   ├── Observation.java
+│   │       │   ├── SerializableStateObservation.java
+│   │       │   ├── Types.java
+│   │       │   └── Vector2d.java
+│   │       ├── TestLearningClient.java
+│   │       ├── testServer.sh
+│   │       └── utils
+│   │           ├── AbstractPlayer.java
+│   │           ├── ClientComm.java
+│   │           ├── com
+│   │           │   └── google
+│   │           │       └── gson
+│   │           │           ├── annotations
+│   │           │           │   ├── Expose.java
+│   │           │           │   ├── JsonAdapter.java
+│   │           │           │   ├── package-info.java
+│   │           │           │   ├── SerializedName.java
+│   │           │           │   ├── Since.java
+│   │           │           │   └── Until.java
+│   │           │           ├── DefaultDateTypeAdapter.java
+│   │           │           ├── ExclusionStrategy.java
+│   │           │           ├── FieldAttributes.java
+│   │           │           ├── FieldNamingPolicy.java
+│   │           │           ├── FieldNamingStrategy.java
+│   │           │           ├── GsonBuilder.java
+│   │           │           ├── Gson.java
+│   │           │           ├── InstanceCreator.java
+│   │           │           ├── internal
+│   │           │           │   ├── $Gson$Preconditions.java
+│   │           │           │   ├── $Gson$Types.java
+│   │           │           │   ├── bind
+│   │           │           │   │   ├── ArrayTypeAdapter.java
+│   │           │           │   │   ├── CollectionTypeAdapterFactory.java
+│   │           │           │   │   ├── DateTypeAdapter.java
+│   │           │           │   │   ├── JsonAdapterAnnotationTypeAdapterFactory.java
+│   │           │           │   │   ├── JsonTreeReader.java
+│   │           │           │   │   ├── JsonTreeWriter.java
+│   │           │           │   │   ├── MapTypeAdapterFactory.java
+│   │           │           │   │   ├── ObjectTypeAdapter.java
+│   │           │           │   │   ├── ReflectiveTypeAdapterFactory.java
+│   │           │           │   │   ├── SqlDateTypeAdapter.java
+│   │           │           │   │   ├── TimeTypeAdapter.java
+│   │           │           │   │   ├── TreeTypeAdapter.java
+│   │           │           │   │   ├── TypeAdapterRuntimeTypeWrapper.java
+│   │           │           │   │   ├── TypeAdapters.java
+│   │           │           │   │   └── util
+│   │           │           │   │       └── ISO8601Utils.java
+│   │           │           │   ├── ConstructorConstructor.java
+│   │           │           │   ├── Excluder.java
+│   │           │           │   ├── JsonReaderInternalAccess.java
+│   │           │           │   ├── LazilyParsedNumber.java
+│   │           │           │   ├── LinkedHashTreeMap.java
+│   │           │           │   ├── LinkedTreeMap.java
+│   │           │           │   ├── ObjectConstructor.java
+│   │           │           │   ├── package-info.java
+│   │           │           │   ├── Primitives.java
+│   │           │           │   ├── Streams.java
+│   │           │           │   └── UnsafeAllocator.java
+│   │           │           ├── JsonArray.java
+│   │           │           ├── JsonDeserializationContext.java
+│   │           │           ├── JsonDeserializer.java
+│   │           │           ├── JsonElement.java
+│   │           │           ├── JsonIOException.java
+│   │           │           ├── JsonNull.java
+│   │           │           ├── JsonObject.java
+│   │           │           ├── JsonParseException.java
+│   │           │           ├── JsonParser.java
+│   │           │           ├── JsonPrimitive.java
+│   │           │           ├── JsonSerializationContext.java
+│   │           │           ├── JsonSerializer.java
+│   │           │           ├── JsonStreamParser.java
+│   │           │           ├── JsonSyntaxException.java
+│   │           │           ├── LongSerializationPolicy.java
+│   │           │           ├── package-info.java
+│   │           │           ├── reflect
+│   │           │           │   ├── package-info.java
+│   │           │           │   └── TypeToken.java
+│   │           │           ├── stream
+│   │           │           │   ├── JsonReader.java
+│   │           │           │   ├── JsonScope.java
+│   │           │           │   ├── JsonToken.java
+│   │           │           │   ├── JsonWriter.java
+│   │           │           │   └── MalformedJsonException.java
+│   │           │           ├── TypeAdapterFactory.java
+│   │           │           └── TypeAdapter.java
+│   │           ├── CompetitionParameters.java
+│   │           ├── ElapsedCpuTimer.java
+│   │           ├── ElapsedWallTimer.java
+│   │           ├── IO.java
+│   │           ├── IOPipe.java
+│   │           ├── IOSocket.java
+│   │           ├── JavaClient.java
+│   │           ├── runServer_compile.sh
+│   │           ├── runServer_nocompile.bat
+│   │           └── runServer_nocompile.sh
+│   └── GVGAI-PythonClient
+│       └── src
+│           ├── ercumentilhan
+│           │   ├── Agent.py
+│           │   └── __init__.py
+│           ├── __init__.py
+│           ├── lib
+│           │   └── gson-2.8.0.jar
+│           ├── oneclickRunFromPythonClient.bat
+│           ├── oneclickRunFromPythonClient.sh
+│           ├── sampleRandom
+│           │   ├── Agent.py
+│           │   └── __init__.py
+│           ├── TestLearningClient.py
+│           └── utils
+│               ├── AbstractPlayer.py
+│               ├── ClientComm.py
+│               ├── CompetitionParameters.py
+│               ├── ElapsedCpuTimer.py
+│               ├── __init__.py
+│               ├── IOSocket.py
+│               ├── PythonClient.py
+│               ├── runServer_compile.sh
+│               ├── runServer_nocompile_python.bat
+│               ├── runServer_nocompile_python.sh
+│               ├── SerializableStateObservation.py
+│               └── Types.py
+├── .cursorrules
+├── doc
+│   ├── GVGAI-SingleLearning-manual.pdf
+│   └── javadoc
+│       // ... Documentación JavaDoc (omitida para brevedad)
+├── examples
+│   ├── 2player
+│   │   // ... Aproximadamente 380 archivos TXT de niveles y definiciones de juegos (omitidos)
+│   ├── all_games_2p.csv
+│   ├── all_games_gd2p.csv
+│   ├── all_games_gd.csv
+│   ├── all_games_sp.csv
+│   ├── contphysics
+│   │   // ... Aproximadamente 70 archivos TXT de niveles y definiciones de juegos (omitidos)
+│   ├── gameDesign
+│   │   // ... Aproximadamente 30 archivos TXT de niveles y definiciones de juegos (omitidos)
+│   └── gridphysics
+│       // ... Aproximadamente 650 archivos TXT de niveles y definiciones de juegos (omitidos)
+├── .gitignore
+├── gson-2.6.2.jar
+├── gvgai.iml
+├── learningTrack2017.iml
+├── LICENSE.txt
+├── logs
+│   ├── clientLog.txt
+│   ├── output_server_redirect_err.txt
+│   └── output_server_redirect.txt
+├── md_docs
+│   ├── Clase0_PresentacionP1-2.txt
+│   ├── enunciado.md
+│   ├── EnunciadoP1.txt
+│   ├── presentacion.md
+│   ├── Tutorial_GVGAI.txt
+│   └── tutorial.md
+├── .project
+├── README_CODE_STRUCTURE.txt
+├── README.md
+├── sources.txt
+├── sprites
+│   ├── newset
+│   │   // ... Aproximadamente 320 archivos PNG de sprites (omitidos)
+│   └── oryx
+│       // ... Aproximadamente 350 archivos PNG de sprites (omitidos)
+├── src
+│   ├── core
+│   │   ├── competition
+│   │   │   ├── AgentExecutor.java
+│   │   │   ├── AgentExecutorMulti.java
+│   │   │   ├── CompetitionParameters.java
+│   │   │   ├── GVGExecutor.java
+│   │   │   ├── GVGReplayer.java
+│   │   │   └── LearnerExecutor.java
+│   │   ├── content
+│   │   │   ├── Content.java
+│   │   │   ├── GameContent.java
+│   │   │   ├── InteractionContent.java
+│   │   │   ├── MappingContent.java
+│   │   │   ├── ParameterBoolContent.java
+│   │   │   ├── ParameterContent.java
+│   │   │   ├── ParameterDoubleContent.java
+│   │   │   ├── ParameterIntContent.java
+│   │   │   ├── SpriteContent.java
+│   │   │   └── TerminationContent.java
+│   │   ├── game
+│   │   │   ├── BasicGame.java
+│   │   │   ├── Event.java
+│   │   │   ├── ForwardModel.java
+│   │   │   ├── GameDescription.java
+│   │   │   ├── Game.java
+│   │   │   ├── GameSpace.java
+│   │   │   ├── Observation.java
+│   │   │   ├── SerializableImage.java
+│   │   │   ├── SerializableStateObservation.java
+│   │   │   ├── SLDescription.java
+│   │   │   ├── StateObservation.java
+│   │   │   └── StateObservationMulti.java
+│   │   ├── generator
+│   │   │   ├── AbstractLevelGenerator.java
+│   │   │   └── AbstractRuleGenerator.java
+│   │   ├── logging
+│   │   │   ├── Logger.java
+│   │   │   └── Message.java
+│   │   ├── optimization
+│   │   │   ├── AbstractOptimizer.java
+│   │   │   ├── OptimizationObjective.java
+│   │   │   └── ucbOptimization
+│   │   │       ├── UCBEquation.java
+│   │   │       ├── UCBEvoEquation.java
+│   │   │       └── UCBOptimization.java
+│   │   ├── player
+│   │   │   ├── AbstractMultiPlayer.java
+│   │   │   ├── AbstractPlayer.java
+│   │   │   ├── LearningPlayer.java
+│   │   │   └── Player.java
+│   │   ├── termination
+│   │   │   ├── MultiSpriteCounter.java
+│   │   │   ├── MultiSpriteCounterSubTypes.java
+│   │   │   ├── SpriteCounter.java
+│   │   │   ├── SpriteCounterMore.java
+│   │   │   ├── StopCounter.java
+│   │   │   ├── Termination.java
+│   │   │   └── Timeout.java
+│   │   └── vgdl
+│   │       ├── Node.java
+│   │       ├── SpriteGroup.java
+│   │       ├── VGDLFactory.java
+│   │       ├── VGDLParser.java
+│   │       ├── VGDLRegistry.java
+│   │       ├── VGDLSprite.java
+│   │       └── VGDLViewer.java
+│   ├── ontology
+│   │   ├── avatar
+│   │   │   ├── FlakAvatar.java
+│   │   │   ├── HorizontalAvatar.java
+│   │   │   ├── MovingAvatar.java
+│   │   │   ├── NullAvatar.java
+│   │   │   ├── oriented
+│   │   │   │   ├── AimedAvatar.java
+│   │   │   │   ├── BirdAvatar.java
+│   │   │   │   ├── CarAvatar.java
+│   │   │   │   ├── LanderAvatar.java
+│   │   │   │   ├── MissileAvatar.java
+│   │   │   │   ├── OngoingAvatar.java
+│   │   │   │   ├── OngoingShootAvatar.java
+│   │   │   │   ├── OngoingTurningAvatar.java
+│   │   │   │   ├── OrientedAvatar.java
+│   │   │   │   ├── PlatformerAvatar.java
+│   │   │   │   ├── ShootAvatar.java
+│   │   │   │   ├── ShootOnlyAvatar.java
+│   │   │   │   ├── SpaceshipAvatar.java
+│   │   │   │   └── WizardAvatar.java
+│   │   │   └── VerticalAvatar.java
+│   │   ├── effects
+│   │   │   ├── binary
+│   │   │   │   ├── AddTimer.java
+│   │   │   │   ├── Align.java
+│   │   │   │   ├── AttractGaze.java
+│   │   │   │   ├── BounceDirection.java
+│   │   │   │   ├── BounceForward.java
+│   │   │   │   ├── ChangeResource.java
+│   │   │   │   ├── CollectResourceIfHeld.java
+│   │   │   │   ├── CollectResource.java
+│   │   │   │   ├── DecreaseSpeedToAll.java
+│   │   │   │   ├── IncreaseSpeedToAll.java
+│   │   │   │   ├── KillBoth.java
+│   │   │   │   ├── KillIfFromAbove.java
+│   │   │   │   ├── KillIfFrontal.java
+│   │   │   │   ├── KillIfNotFrontal.java
+│   │   │   │   ├── KillIfOtherHasMore.java
+│   │   │   │   ├── PullWithIt.java
+│   │   │   │   ├── SetSpeedForAll.java
+│   │   │   │   ├── TeleportToExit.java
+│   │   │   │   ├── TransformIfCount.java
+│   │   │   │   ├── TransformToAll.java
+│   │   │   │   ├── TransformToSingleton.java
+│   │   │   │   ├── WallBounce.java
+│   │   │   │   ├── WallReverse.java
+│   │   │   │   └── WallStop.java
+│   │   │   ├── Effect.java
+│   │   │   ├── TimeEffect.java
+│   │   │   └── unary
+│   │   │       ├── AddHealthPoints.java
+│   │   │       ├── AddHealthPointsToMax.java
+│   │   │       ├── CloneSprite.java
+│   │   │       ├── FlipDirection.java
+│   │   │       ├── HalfSpeed.java
+│   │   │       ├── KillAll.java
+│   │   │       ├── KillIfAlive.java
+│   │   │       ├── KillIfFast.java
+│   │   │       ├── KillIfHasLess.java
+│   │   │       ├── KillIfHasMore.java
+│   │   │       ├── KillIfNotUpright.java
+│   │   │       ├── KillIfSlow.java
+│   │   │       ├── KillSprite.java
+│   │   │       ├── RemoveScore.java
+│   │   │       ├── ReverseDirection.java
+│   │   │       ├── ShieldFrom.java
+│   │   │       ├── SpawnAbove.java
+│   │   │       ├── SpawnBehind.java
+│   │   │       ├── SpawnBelow.java
+│   │   │       ├── SpawnIfCounterSubTypes.java
+│   │   │       ├── SpawnIfHasLess.java
+│   │   │       ├── SpawnIfHasMore.java
+│   │   │       ├── Spawn.java
+│   │   │       ├── SpawnLeft.java
+│   │   │       ├── SpawnRight.java
+│   │   │       ├── StepBack.java
+│   │   │       ├── SubtractHealthPoints.java
+│   │   │       ├── TransformTo.java
+│   │   │       ├── TransformToRandomChild.java
+│   │   │       ├── TurnAround.java
+│   │   │       ├── UndoAll.java
+│   │   │       ├── UpdateSpawnType.java
+│   │   │       ├── WaterPhysics.java
+│   │   │       └── WrapAround.java
+│   │   ├── physics
+│   │   │   ├── ContinuousPhysics.java
+│   │   │   ├── GridPhysics.java
+│   │   │   └── Physics.java
+│   │   ├── sprites
+│   │   │   ├── Conveyor.java
+│   │   │   ├── Door.java
+│   │   │   ├── Flicker.java
+│   │   │   ├── Immovable.java
+│   │   │   ├── missile
+│   │   │   │   ├── ErraticMissile.java
+│   │   │   │   ├── Missile.java
+│   │   │   │   └── RandomMissile.java
+│   │   │   ├── npc
+│   │   │   │   ├── AlternateChaser.java
+│   │   │   │   ├── Chaser.java
+│   │   │   │   ├── Fleeing.java
+│   │   │   │   ├── LOSChaser.java
+│   │   │   │   ├── PathAltChaser.java
+│   │   │   │   ├── PathChaser.java
+│   │   │   │   ├── RandomAltChaser.java
+│   │   │   │   ├── RandomInertial.java
+│   │   │   │   ├── RandomNPC.java
+│   │   │   │   ├── RandomPathAltChaser.java
+│   │   │   │   ├── Walker.java
+│   │   │   │   └── WalkerJumper.java
+│   │   │   ├── OrientedFlicker.java
+│   │   │   ├── Passive.java
+│   │   │   ├── producer
+│   │   │   │   ├── Bomber.java
+│   │   │   │   ├── BomberRandomMissile.java
+│   │   │   │   ├── Portal.java
+│   │   │   │   ├── RandomBomber.java
+│   │   │   │   ├── SpawnPoint.java
+│   │   │   │   ├── SpawnPointMultiSprite.java
+│   │   │   │   └── SpriteProducer.java
+│   │   │   ├── Resource.java
+│   │   │   ├── ResourcePack.java
+│   │   │   └── Spreader.java
+│   │   └── Types.java
+│   ├── source_list.txt
+│   ├── testing
+│   │   ├── ErrorTestingMultiplayer.java
+│   │   └── ErrorTestingSingleplayer.java
+│   ├── tools
+│   │   // ... Herramientas y utilidades (se mantiene igual)
+│   └── tracks
+│       ├── ArcadeMachine.java
+│       ├── DesignMachine.java
+│       ├── gameDesign
+│       │   ├── TestGameSpace.java
+│       │   └── TestMultiGameSpace.java
+│       ├── LearningMachine.java
+│       ├── levelGeneration
+│       │   ├── constraints
+│       │   │   ├── AbstractConstraint.java
+│       │   │   ├── AvatarNumberConstraint.java
+│       │   │   ├── CombinedConstraints.java
+│       │   │   ├── CoverPercentageConstraint.java
+│       │   │   ├── DeathConstraint.java
+│       │   │   ├── GoalConstraint.java
+│       │   │   ├── SolutionLengthConstraint.java
+│       │   │   ├── SpriteNumberConstraint.java
+│       │   │   └── WinConstraint.java
+│       │   ├── constructiveLevelGenerator
+│       │   │   ├── LevelCoverData.java
+│       │   │   ├── LevelData.java
+│       │   │   └── LevelGenerator.java
+│       │   ├── geneticLevelGenerator
+│       │   │   ├── Chromosome.java
+│       │   │   ├── LevelGenerator.java
+│       │   │   └── SharedData.java
+│       │   ├── LevelGenMachine.java
+│       │   ├── randomLevelGenerator
+│       │   │   └── LevelGenerator.java
+│       │   └── TestLevelGeneration.java
+│       ├── multiPlayer
+│       │   ├── advanced
+│       │   │   ├── sampleMCTS
+│       │   │   │   ├── Agent.java
+│       │   │   │   ├── SingleMCTSPlayer.java
+│       │   │   │   └── SingleTreeNode.java
+│       │   │   ├── sampleRHEA
+│       │   │   │   ├── Agent.java
+│       │   │   │   └── Individual.java
+│       │   │   └── sampleRS
+│       │   │       ├── Agent.java
+│       │   │       └── Individual.java
+│       │   ├── deprecated
+│       │   │   ├── sampleGA
+│       │   │   │   └── Agent.java
+│       │   │   └── sampleMCTS
+│       │   │       ├── Agent.java
+│       │   │       ├── SingleMCTSPlayer.java
+│       │   │       └── SingleTreeNode.java
+│       │   ├── simple
+│       │   │   ├── doNothing
+│       │   │   │   └── Agent.java
+│       │   │   ├── sampleOneStepLookAhead
+│       │   │   │   └── Agent.java
+│       │   │   └── sampleRandom
+│       │   │       └── Agent.java
+│       │   ├── TestMultiPlayer.java
+│       │   └── tools
+│       │       ├── heuristics
+│       │       │   ├── SimpleStateHeuristic.java
+│       │       │   ├── StateHeuristicMulti.java
+│       │       │   └── WinScoreHeuristic.java
+│       │       ├── human
+│       │       │   └── Agent.java
+│       │       └── replayer
+│       │           └── Agent.java
+│       ├── ruleGeneration
+│       │   ├── constructiveRuleGenerator
+│       │   │   └── RuleGenerator.java
+│       │   ├── geneticRuleGenerator
+│       │   │   ├── Chromosome.java
+│       │   │   ├── RuleGenerator.java
+│       │   │   └── SharedData.java
+│       │   ├── randomRuleGenerator
+│       │   │   └── RuleGenerator.java
+│       │   ├── RuleGenMachine.java
+│       │   └── TestRuleGeneration.java
+│       ├── singleLearning
+│       │   ├── oneclickRunFromServer.sh
+│       │   ├── TestSingleLearning.java
+│       │   └── utils
+│       │       ├── Comm.java
+│       │       ├── JavaServer.java
+│       │       ├── PipeComm.java
+│       │       ├── runClient_nocompile.bat
+│       │       ├── runClient_nocompile_pipes.sh
+│       │       ├── runClient_nocompile.sh
+│       │       └── SocketComm.java
+│       └── singlePlayer
+│           ├── advanced
+│           │   ├── olets
+│           │   │   ├── Agent.java
+│           │   │   ├── SingleMCTSPlayer.java
+│           │   │   └── SingleTreeNode.java
+│           │   ├── sampleMCTS
+│           │   │   ├── Agent.java
+│           │   │   ├── SingleMCTSPlayer.java
+│           │   │   └── SingleTreeNode.java
+│           │   ├── sampleRHEA
+│           │   │   ├── Agent.java
+│           │   │   └── Individual.java
+│           │   └── sampleRS
+│           │       ├── Agent.java
+│           │       └── Individual.java
+│           ├── deprecated
+│           │   ├── sampleGA
+│           │   │   └── Agent.java
+│           │   └── sampleMCTS
+│           │       ├── Agent.java
+│           │       ├── SingleMCTSPlayer.java
+│           │       └── SingleTreeNode.java
+│           ├── simple
+│           │   ├── doNothing
+│           │   │   └── Agent.java
+│           │   ├── greedyTreeSearch
+│           │   │   ├── Agent.java
+│           │   │   └── TreeNode.java
+│           │   ├── sampleonesteplookahead
+│           │   │   └── Agent.java
+│           │   ├── sampleRandom
+│           │   │   └── Agent.java
+│           │   └── simpleRandom
+│           │       └── Agent.java
+│           ├── src_SANCHEZ_GUERRERO_ANGEL
+│           │   ├── AgenteAStar.java
+│           │   ├── AgenteCompeticion.java
+│           │   ├── AgenteDijkstra.java
+│           │   ├── AgenteLRTAStart.java
+│           │   └── AgenteRTAStar.java
+│           ├── Test.java
+│           └── tools
+│               ├── Heuristics
+│               │   ├── SimpleStateHeuristic.java
+│               │   ├── StateHeuristic.java
+│               │   └── WinScoreHeuristic.java
+│               ├── human
+│               │   └── Agent.java
+│               ├── repeatOLETS
+│               │   └── Agent.java
+│               ├── replayer
+│               │   └── Agent.java
+│               └── ucbOptimizerAgent
+│                   ├── Agent.java
+│                   ├── Helper.java
+│                   ├── SingleMCTSPlayer.java
+│                   └── SingleTreeNode.java
+├── test_level.txt
+└── tree.txt
+
+151 directories, 2617 files
