@@ -89,7 +89,7 @@ public class Nodo implements Comparable<Nodo> {
                                    int[][] capasRojas, int[][] capasAzules, long timestamp) {
         ArrayList<Nodo> sucesores = new ArrayList<>();
         
-        // Orden de expansión: Derecha, Izquierda, Arriba, Abajo (como requiere el enunciado)
+        // Orden de expansión: Derecha, Izquierda, Arriba, Abajo
         ACTIONS[] acciones = {
             Types.ACTIONS.ACTION_RIGHT,
             Types.ACTIONS.ACTION_LEFT,
@@ -185,26 +185,15 @@ public class Nodo implements Comparable<Nodo> {
      * @return Lista de acciones que forman el camino
      */
     public ArrayList<ACTIONS> reconstruirCamino() {
+        
         ArrayList<ACTIONS> camino = new ArrayList<>();
         
-        // Imprimir debug (comentado para mejorar rendimiento)
-        // System.out.println("Reconstruyendo camino:");
-        
-        // Adicional debug para cada paso reconstruido (comentado para mejorar rendimiento)
-        // Stack<Nodo> nodosRuta = new Stack<>();
-        
         Nodo actual = this;
-        // int pasoActual = 0;
+
         while (actual.padre != null) {
-            // pasoActual++;
-            // System.out.println("Paso " + pasoActual + ": [" + actual.x + "," + actual.y + "] con capa " + 
-            //                   actual.capa + " - Acción: " + actual.accion + " - hash: " + actual.hashCode());
             camino.add(0, actual.accion);
-            // nodosRuta.push(actual);
             actual = actual.padre;
         }
-        
-        // System.out.println("Nodo inicial: [" + actual.x + "," + actual.y + "] con capa " + actual.capa + " - hash: " + actual.hashCode());
         
         return camino;
     }

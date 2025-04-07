@@ -225,18 +225,18 @@ public class AgenteDijkstra extends AbstractPlayer {
         long tFin = System.nanoTime();
         tiempoEjecucion = (tFin - tInicio) / 1000000; // En milisegundos
         
-        // Imprimir solo las métricas básicas y el camino final
-        System.out.println("Runtime: " + tiempoEjecucion + " ms | Ruta: " + tamañoRuta + " pasos | Nodos: " + nodosExpandidos);
-        
         // Si encontramos un camino, mostrar solo la información final
         if (caminoCompleto != null && !caminoCompleto.isEmpty()) {
-            System.out.println("Camino encontrado con " + caminoCompleto.size() + " pasos.");
+    
+            System.out.println("Camino encontrado!");
+            System.out.println("Runtime: " + tiempoEjecucion + " ms | Ruta: " + tamañoRuta + " pasos | Nodos: " + nodosExpandidos);
+
             // for (int i = 0; i < caminoCompleto.size(); i++) {
             //     System.out.println("- Paso " + (i+1) + ": " + caminoCompleto.get(i));
             // }
             return caminoCompleto.get(pasoActual++);
         } else {
-            System.out.println("¡No se encontró camino hasta el portal!");
+            System.out.println("No se encontró camino hasta el portal!");
             return Types.ACTIONS.ACTION_NIL;
         }
     }
@@ -269,7 +269,7 @@ public class AgenteDijkstra extends AbstractPlayer {
             
             // Si encontramos el portal, reconstruimos el camino
             if (portales[actual.x][actual.y] == 1) {
-                // System.out.println("¡Portal encontrado en [" + actual.x + "," + actual.y + "]!");
+                // System.out.println("Portal encontrado en [" + actual.x + "," + actual.y + "]!");
                 ArrayList<Types.ACTIONS> caminoCalculado = actual.reconstruirCamino();
                 tamañoRuta = caminoCalculado.size();
                 return caminoCalculado;
