@@ -11,7 +11,7 @@ import ontology.Types.ACTIONS;
  * Contiene el estado (posición x,y + tipo de capa), el coste, la acción que llevó a este nodo,
  * y una referencia al nodo padre.
  */
-public class Nodo implements Comparable<Nodo> {
+public class NodoDijkstra implements Comparable<NodoDijkstra> {
     // Coordenadas del nodo en el grid
     public int x, y;
     
@@ -22,7 +22,7 @@ public class Nodo implements Comparable<Nodo> {
     public int coste;
     
     // Nodo padre (para reconstruir el camino)
-    public Nodo padre;
+    public NodoDijkstra padre;
     
     // Acción que llevó a este nodo
     public ACTIONS accion;
@@ -43,7 +43,7 @@ public class Nodo implements Comparable<Nodo> {
      * @param y Coordenada y en el grid
      * @param capa Tipo de capa que porta el avatar
      */
-    public Nodo(int x, int y, TipoCapa capa) {
+    public NodoDijkstra(int x, int y, TipoCapa capa) {
         this.x = x;
         this.y = y;
         this.capa = capa;
@@ -63,7 +63,7 @@ public class Nodo implements Comparable<Nodo> {
      * @param accion Acción que llevó a este nodo
      * @param timestamp Timestamp para desempate FIFO
      */
-    public Nodo(int x, int y, TipoCapa capa, int coste, Nodo padre, ACTIONS accion, long timestamp) {
+    public NodoDijkstra(int x, int y, TipoCapa capa, int coste, NodoDijkstra padre, ACTIONS accion, long timestamp) {
         this.x = x;
         this.y = y;
         this.capa = capa;
@@ -84,10 +84,10 @@ public class Nodo implements Comparable<Nodo> {
      * @param timestamp Contador para asignar timestamps a los nodos
      * @return Lista de nodos sucesores válidos
      */
-    public ArrayList<Nodo> expandir(boolean[][] casillasProhibidas, boolean[][] trampasCasillas, 
+    public ArrayList<NodoDijkstra> expandir(boolean[][] casillasProhibidas, boolean[][] trampasCasillas, 
                                    boolean[][] paredesRojas, boolean[][] paredesAzules,
                                    int[][] capasRojas, int[][] capasAzules, long timestamp) {
-        ArrayList<Nodo> sucesores = new ArrayList<>();
+        ArrayList<NodoDijkstra> sucesores = new ArrayList<>();
         
         // Orden de expansión: Derecha, Izquierda, Arriba, Abajo
         ACTIONS[] acciones = {
@@ -98,7 +98,7 @@ public class Nodo implements Comparable<Nodo> {
         };
         
         for (ACTIONS accion : acciones) {
-            Nodo sucesor = aplicarAccion(accion, casillasProhibidas, trampasCasillas, 
+            NodoDijkstra sucesor = aplicarAccion(accion, casillasProhibidas, trampasCasillas, 
                                        paredesRojas, paredesAzules, capasRojas, capasAzules, timestamp);
             if (sucesor != null) {
                 sucesores.add(sucesor);
@@ -120,7 +120,7 @@ public class Nodo implements Comparable<Nodo> {
      * @param timestamp Timestamp para el nuevo nodo
      * @return Nodo resultante o null si la acción no es válida
      */
-    private Nodo aplicarAccion(ACTIONS accion, boolean[][] casillasProhibidas, boolean[][] trampasCasillas, 
+    private NodoDijkstra aplicarAccion(ACTIONS accion, boolean[][] casillasProhibidas, boolean[][] trampasCasillas, 
                              boolean[][] paredesRojas, boolean[][] paredesAzules,
                              int[][] capasRojas, int[][] capasAzules, long timestamp) {
         int newX = this.x;
@@ -177,7 +177,7 @@ public class Nodo implements Comparable<Nodo> {
         }
         
         // Devolvemos el nuevo nodo con coste incrementado
-        return new Nodo(newX, newY, nuevaCapa, this.coste + 1, this, accion, timestamp);
+        return new NodoDijkstra(newX, newY, nuevaCapa, this.coste + 1, this, accion, timestamp);
     }
     
     /**
@@ -185,11 +185,9 @@ public class Nodo implements Comparable<Nodo> {
      * @return Lista de acciones que forman el camino
      */
     public ArrayList<ACTIONS> reconstruirCamino() {
-        
         ArrayList<ACTIONS> camino = new ArrayList<>();
         
-        Nodo actual = this;
-
+        NodoDijkstra actual = this;
         while (actual.padre != null) {
             camino.add(0, actual.accion);
             actual = actual.padre;
@@ -204,7 +202,7 @@ public class Nodo implements Comparable<Nodo> {
      * @return -1, 0, o 1 según sea menor, igual o mayor
      */
     @Override
-    public int compareTo(Nodo otro) {
+    public int compareTo(NodoDijkstra otro) {
         if (this.coste != otro.coste) {
             return Integer.compare(this.coste, otro.coste);
         }
@@ -226,7 +224,7 @@ public class Nodo implements Comparable<Nodo> {
         if (o == null || getClass() != o.getClass()) return false;
         
         // Casting y comparación de atributos relevantes
-        Nodo otro = (Nodo) o;
+        NodoDijkstra otro = (NodoDijkstra) o;
         return x == otro.x && y == otro.y && capa == otro.capa;
     }
     
@@ -245,6 +243,6 @@ public class Nodo implements Comparable<Nodo> {
      */
     @Override
     public String toString() {
-        return "Nodo[" + x + "," + y + "," + capa + "]";
+        return "NodoDijkstra[" + x + "," + y + "," + capa + "]";
     }
 } 

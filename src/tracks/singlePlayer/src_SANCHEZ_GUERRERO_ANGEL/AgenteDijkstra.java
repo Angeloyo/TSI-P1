@@ -203,20 +203,11 @@ public class AgenteDijkstra extends AbstractPlayer {
         // Imprimir la posición inicial del avatar para seguimiento
         System.out.println("Posición inicial del avatar: [" + (int)avatarPosition.x + "," + (int)avatarPosition.y + "]");
         
-        // Determinar tipo de capa inicial
-        Nodo.TipoCapa capaInicial = Nodo.TipoCapa.NINGUNA;
-        // Inferimos el tipo de avatar por su posición en el grid de observación
-        int avatarType = stateObs.getAvatarType();
-        System.out.println("Tipo de avatar: " + avatarType);
-        
-        // En LabyrinthDual, el avatar siempre comienza sin capa
-        // Los valores del tipo de avatar no son constantes entre distintos mapas
-        // Por tanto, siempre asumimos que comienza sin capa
-        capaInicial = Nodo.TipoCapa.NINGUNA;
-        System.out.println("Avatar comienza sin capa");
+        // Determinar tipo de capa inicial ( asumimos que siempre al comienzo es ninguna)
+        NodoDijkstra.TipoCapa capaInicial = NodoDijkstra.TipoCapa.NINGUNA;
         
         // Inicializamos el nodo inicial
-        Nodo nodoInicial = new Nodo((int) avatarPosition.x, (int) avatarPosition.y, capaInicial);
+        NodoDijkstra nodoInicial = new NodoDijkstra((int) avatarPosition.x, (int) avatarPosition.y, capaInicial);
         
         // Ejecutamos Dijkstra
         caminoCompleto = buscarCaminoDijkstra(nodoInicial);
@@ -241,15 +232,15 @@ public class AgenteDijkstra extends AbstractPlayer {
         }
     }
     
-    private ArrayList<Types.ACTIONS> buscarCaminoDijkstra(Nodo nodoInicial) {
+    private ArrayList<Types.ACTIONS> buscarCaminoDijkstra(NodoDijkstra nodoInicial) {
         // Cola de prioridad para nodos abiertos
-        PriorityQueue<Nodo> abiertos = new PriorityQueue<>();
+        PriorityQueue<NodoDijkstra> abiertos = new PriorityQueue<>();
         
         // Conjunto de nodos cerrados usando un HashSet con verificación de igualdad personalizada
-        Set<Nodo> cerrados = new HashSet<>();
+        Set<NodoDijkstra> cerrados = new HashSet<>();
         
         // Mapa para nodos ya visitados
-        Map<String, Nodo> nodosVisitados = new HashMap<>();
+        Map<String, NodoDijkstra> nodosVisitados = new HashMap<>();
         
         // Inicializamos el nodo raíz
         abiertos.add(nodoInicial);
@@ -262,7 +253,7 @@ public class AgenteDijkstra extends AbstractPlayer {
         
         while (!abiertos.isEmpty()) {
             // Extraemos el nodo con menor coste
-            Nodo actual = abiertos.poll();
+            NodoDijkstra actual = abiertos.poll();
             
             // Incrementamos contador de nodos expandidos
             nodosExpandidos++;
@@ -279,13 +270,13 @@ public class AgenteDijkstra extends AbstractPlayer {
             cerrados.add(actual);
             
             // Expandimos los vecinos
-            ArrayList<Nodo> vecinos = actual.expandir(casillasProhibidas, trampasCasillas, 
+            ArrayList<NodoDijkstra> vecinos = actual.expandir(casillasProhibidas, trampasCasillas, 
                                                    paredesRojas, paredesAzules, 
                                                    capasRojas, capasAzules, timestamp);
             
             // System.out.println("Expandiendo nodo [" + actual.x + "," + actual.y + "] - Vecinos generados: " + vecinos.size());
             
-            for (Nodo vecino : vecinos) {
+            for (NodoDijkstra vecino : vecinos) {
                 String vecinoKey = nodoToKey(vecino);
                 
                 // Verificamos si el nodo ya está en cerrados usando HashSet.contains()
@@ -294,7 +285,7 @@ public class AgenteDijkstra extends AbstractPlayer {
                 }
                 
                 // Si el nodo no estaba en abiertos o tiene un coste menor, lo añadimos
-                Nodo nodoExistente = nodosVisitados.get(vecinoKey);
+                NodoDijkstra nodoExistente = nodosVisitados.get(vecinoKey);
                 if (nodoExistente == null || vecino.coste < nodoExistente.coste) {
                     timestamp++;
                     vecino.timestamp = timestamp;
@@ -311,7 +302,7 @@ public class AgenteDijkstra extends AbstractPlayer {
     }
     
     // Método para convertir un nodo a una clave única para el mapa
-    private String nodoToKey(Nodo nodo) {
+    private String nodoToKey(NodoDijkstra nodo) {
         return nodo.x + "," + nodo.y + "," + nodo.capa;
     }
 }
